@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const API_URL = import.meta.env.MODE === "development" ? "http:localhost:5000" : "/"
+
 const Signup = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -16,7 +18,7 @@ const Signup = () => {
     setLoading(true);
     setError('')
     try {
-      const response = await axios.post('http://localhost:3333/api/auth/signup', {name, email, password}, {withCredentials: true})
+      const response = await axios.post(`${API_URL}/api/auth/signup`, {name, email, password}, {withCredentials: true})
       navigate('/')
     } catch (error) {
       console.log(error)

@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 
+const API_URL = import.meta.env.MODE === "development" ? "http:localhost:5000" : "/"
+
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -12,7 +14,7 @@ const Login = () => {
         setLoading(true)
         setError('')
         try {
-            const response = await axios.post('http://localhost:3333/api/auth/login', {email, password}, {withCredentials: true})
+            const response = await axios.post(`${API_URL}/api/auth/login`, {email, password}, {withCredentials: true})
             console.log(response)
         } catch (error) {
             setError(error.response.data.message)

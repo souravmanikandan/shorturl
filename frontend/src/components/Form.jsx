@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 
+const API_URL = import.meta.env.MODE === "development" ? "http:localhost:5000" : "/"
+
 const Form = () => {
   const [origUrl, setOrigUrl] = useState('')
   const [shortUrl, setShortUrl] = useState('')
@@ -16,7 +18,7 @@ const Form = () => {
     setError('')
     setShortUrl('')
     try {
-      const response = await axios.post('http://localhost:3333/api/short', {origUrl})
+      const response = await axios.post(`${API_URL}/api/short`, {origUrl})
       setShortUrl(response.data.shortUrl)
     } catch (error) {
       setError('Failed to shorten the URL. Try again.')
