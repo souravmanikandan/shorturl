@@ -28,7 +28,7 @@ const App = () => {
         <Route path='/' element={<ProtectRoute><Form /></ProtectRoute>} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
-        <Route path='*' element={<Navigate to='/' replace />} />
+        {/* <Route path='*' element={<Navigate to='/' replace />} /> */}
       </Routes>
     </div>
   )
