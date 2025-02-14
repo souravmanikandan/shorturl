@@ -55,7 +55,7 @@ const Form = () => {
         )}
         {shortUrl && (
           <p className='mt-2 text-green-500'>
-            Shortend URL: <a target='_blank' href={shortUrl} className="text-blue-600 underline">{shortUrl}</a>
+            shorten URL: <a target='_blank' href={shortUrl} className="text-blue-600 underline">{shortUrl}</a>
           </p>
         )}
         <p><a onClick={handleLogout} href={shortUrl} className="text-blue-600 underline">Logout</a></p>
