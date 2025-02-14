@@ -4,7 +4,7 @@ import Form from './components/Form'
 import Signup from './components/Signup'
 import { useStore } from './store/authStore'
 import Login from './components/Login'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
 const ProtectRoute = ({ children }) => {
   const {isAuthenticated, user} = useStore();
@@ -28,6 +28,7 @@ const App = () => {
         <Route path='/' element={<ProtectRoute><Form /></ProtectRoute>} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
+        <Route path='*' element={<Navigate to='/' replace />} />
       </Routes>
     </div>
   )
