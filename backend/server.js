@@ -31,10 +31,15 @@ app.use('/api', urlsRouter);
 // ✅ Fix: Serve frontend only in production
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, "/frontend/dist")));
-    app.get("*", (req, res) => {
+
+    app.get("*", (req, res, next) => {
+        if (req.originalUrl.startsWith('/api')) {
+            return next(); // Let API routes work
+        }
         res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
     });
 }
+
 
 // Server Setup
 const PORT = process.env.PORT || 5000;
